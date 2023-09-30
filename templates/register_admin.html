@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <link rel="stylesheet" href="{% static 'adminregcss.css' %}">
+</head>
+<body>
+  <div class="body">
+    
+    <form id="registrationForm" action="{% url 'register_admin' %}" method="POST">
+      {% csrf_token %}
+      <h1>Create Account</h1>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirm_password" required>
+      </div>
+      <div>
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="full_name" required>
+      </div>
+      <div>
+        <label for="admin_id">Admin ID:</label>
+        <input type="text" id="admin_id" name="admin_id" required>
+      </div>
+      <div class="textfeild"> 
+        <label for="feedback">Enter Your Area of Expertise:</label>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea><br><br>
+      </div>
+      <div>
+        <label for="experience">Experience (Years):</label>
+        <select id="experience" name="experience">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="3">4</option>
+          <option value="3">5</option>
+          <option value="3">6</option>
+          <option value="3">7</option>
+          <option value="3">8</option>
+          <option value="3">9+</option>
+        </select>
+      </div>
+      
+      <input type="submit" value="Register">
+    </form>
+  </div>
+  
+</body>
+</html>

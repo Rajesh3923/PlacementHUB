@@ -1,0 +1,78 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Profile</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div
+              class="card-header"
+              style="background-color: #007bff; color: #fff"
+            >
+              <h2 class="text-center">Admin Profile</h2>
+            </div>
+            {% for datas in data %}
+            <div class="card-body" style="padding: 20px">
+              
+              <div class="form-group">
+                <label for="name" style="font-weight: bold">Name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  value="{{ datas.full_name }}"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label for="id" style="font-weight: bold">ID:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="id"
+                  value="{{ datas.admin_id }}"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label for="experience" style="font-weight: bold"
+                  >Experience:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="experience"
+                  value="{{ datas.experience }}"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label for="area_of_expertise" style="font-weight: bold"
+                  >Area of Expertise:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="area_of_expertise"
+                  value="{{ datas.feedback }}"
+                  readonly
+                />
+              </div>
+              
+            </div>
+            {% endfor   %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

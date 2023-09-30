@@ -1,0 +1,333 @@
+/* Common CSS styles */
+* {
+    --transition: all 0.4s ease;
+    --color-hover: rgba(82, 59, 232);
+  }
+  
+  :root {
+    --main-font-family: 'Arial', sans-serif;
+    --background-color: #f0f0f0;
+}
+body{
+    background-color:#f5f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+  /* Vertical navigation bar styles */
+  .wrapper {
+    display: flex; /* Added to create a flex container */
+  }
+  /* chat*--------------------------------------*/
+  .chat-link {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 20px;
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  
+  .chat-link a {
+    color: #09009f;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border: 2px solid #09009f;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .chat-link a:hover {
+    background-color: #09009f;
+    color: #fff;
+  }
+  
+  
+  
+  
+  .logo {
+    margin-left: 70px;
+    text-decoration: solid;
+    text-decoration-color: black;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    cursor: pointer;
+    color: #09009f;
+    margin-bottom: 30px;
+  }
+  
+  .sidenav {
+    margin-left: -89px;
+    width: 290px; /* Adjust the width of the sidebar */
+    height: 100vh; /* Set the height of the sidebar to full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #f5f2f2;
+    padding-top: 40px;
+  }
+  
+  .nav-links {
+    margin-left: -10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center;
+  }
+  
+  .nav-links li {
+    margin: 8px 0;
+    list-style: none;
+  }
+  
+  .nav-links i {
+    color: #000;
+    height: 50px;
+    min-width: 50px;
+    font-size: 27px;
+    text-align: center;
+    line-height: 50px;
+  }
+  
+  .nav-links li a {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    padding: 0 16px;
+    border-radius: 32px;
+    align-items: center;
+    text-decoration: none;
+    background: #f5f2f2;
+  }
+  
+  .nav-links li:hover a {
+    background: var(--color-hover);
+    transition: var(--transition);
+  }
+  
+  .nav-links li:hover i {
+    color: #fff;
+  }
+  
+  .nav-links li a .title {
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    display: block;
+    transition: var(--transition);
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .nav-links li:hover a .title {
+    color: #fff;
+  }
+  
+  /* Adjust the content area to the right of the sidebar */
+  .main-home {
+    margin-left: 250px; /* Adjust this value to match the sidebar width */
+    padding: 10px;
+  }
+  
+  .center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  /*--------------------BUTTON------------------------------------------------------------------*/
+  /* <button class="btn"> Hover me</button> [this is html code]*/
+  
+  .btn {
+    border: none;
+    border-radius: 6px;
+    padding: 16px 30px;
+    background: #4070ff;
+    color: #fff;
+    transition: 0.2s;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .btn:hover {
+    box-shadow: 0 0 0 4px #fff, 0 0 0 8px #4070ff;
+  }
+  /*-----------------------------------------BUTTON -END--------------------------------------------*/
+  .nav {
+    margin-bottom: -30px;
+    width: 100%;
+    background: #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 23px; /* Placing icon */
+  }
+  
+  .nav ul {
+    background: #ffff;
+    /* margin-top: 0px; */
+    width: 100%;
+    display: flex;
+    align-items: end;
+  }
+  
+  nav ul {
+    /* margin-left: 400px; */ /* Removed this line to align icons and labels in a straight line */
+  }
+  
+  nav ul li a {
+    color: #000;
+    font-size: larger;
+    display: flex;
+    margin-right: -3px;
+  }
+  
+  nav ul li a:hover {
+    color: #fff;
+  }
+  
+  .main-home {
+  }
+  
+  .main-container {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .titlehome {
+    margin-top: -10px;
+    margin-left: -40px;
+    width: 400px;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 70px;
+    text-transform: capitalize;
+  }
+  
+  .sub-title {
+    margin-left: -40px;
+    margin-top: 25px;
+    background: -webkit-linear-gradient(#09009f, #00ff95 150%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .right-content {
+    text-align: center;
+  }
+  
+  .right-content img {
+    width: 400px;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .main-container {
+      flex-direction: column;
+      text-align: center;
+      gap: 60px;
+    }
+  }
+  /* CSS to style the SVG container */
+  /* ... (Existing CSS) */
+  
+  .title-container {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .titlepkit {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: "Anonymous Pro", monospace;
+    letter-spacing: 7px;
+    overflow: hidden;
+    color: hsl(0, 0%, 68%);
+    white-space: nowrap;
+
+  }
+  
+  
+  
+  .gradient-text {
+    background: -webkit-linear-gradient(#09009f, #00ff95);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* ... (Existing CSS) */
+  
+  .svg-container {
+    margin-top: 20px; /* Adjust as needed */
+    width: calc(
+      100% - 260px
+    ); /* Subtract the width of the sidebar from the total width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* CSS to fit the SVG image within the container */
+  .svg-container img {
+    max-width: 100%;
+    height: auto;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 50px;
+    
+  }
+
+
+
+
+
+tr th{
+    border: 2px solid black;
+    text-align: center;
+}
+tr td{
+    border: 1px solid black;
+    text-align: center;
+    font-family: var(--main-font-family);
+}
+table{
+    border-collapse: collapse;
+    margin-top: 9px;
+
+}
+.drive-table{
+    padding: 20px 20px;
+    background-color:#4070ff;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    margin-top: 20px;
+}
+.titlepkit {
+
+    font-weight: bold;
+    font-family: "Anonymous Pro", monospace;
+    letter-spacing: 2px;
+    color: hsl(0, 0%, 68%);
+    white-space: nowrap;
+}
+
+  
+ 

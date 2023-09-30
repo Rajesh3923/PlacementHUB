@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Login</title>
+    <link rel="stylesheet" href="{% static 'stulogcss.css' %}" />
+    <style>
+      .error-message {
+        display: block;
+        position: fixed;
+        top: 43%;
+        left: 23%;
+        transform: translate(-50%, -50%);
+        padding: 10px 20px;
+        background-color: #ffcccc;
+        color: #d8000c;
+        font-size: 18px;
+        border-radius: 40px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        animation: showError 5s ease-in-out;
+        z-index: 9999;
+        width:160px;
+      }
+      .fade-out {
+        opacity: 0;
+      }
+
+      @keyframes showError {
+        0% {
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    </style>
+    <script>
+      // Function to fade out the error message after 5 seconds
+      function fadeOutErrorMessage() {
+        const errorMessage = document.querySelector('.error-message');
+        errorMessage.classList.add('fade-out');
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 4000); // Adjust the delay as needed
+      }
+
+      // Trigger the fade-out effect on page load
+      window.addEventListener('load', () => {
+        fadeOutErrorMessage();
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Student Login</h1>
+    {% if error_message %}
+    <div class="error-message">
+      <p>{{ error_message }}</p>
+    </div>
+    {% endif %}
+    <form method="POST" action="{% url 'studentlogin' %}">
+      {% csrf_token %}
+      <div>
+        <label for="userid">User ID:</label>
+        <input type="text" id="userid" name="userid" style="width: 90%; padding: 10px; border: none; border-radius: 3px; background: #1A2226; color: #0b0b0bc2; margin-bottom: 20px;" required />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="number" id="password" name="password" style="width: 90%; padding: 10px; border: none; border-radius: 3px; background: #1A2226; color: #0b0b0bc2; margin-bottom: 20px;" required />
+      </div>
+      <input type="submit" value="Login" />
+      <div class="newreg">
+        <a href="{% url 'stureg' %}" class="stureg" style="color:#fff ">New? Create Account</a>
+      </div>
+    </form>
+    <script src="{% static 'script.js' %}"></script>
+  </body>
+</html>

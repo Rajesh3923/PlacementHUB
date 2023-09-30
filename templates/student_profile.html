@@ -1,0 +1,177 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .profile-card {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+
+    .profile-image {
+      text-align: center;
+    }
+
+    .profile-image img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #007bff;
+      object-fit: cover;
+    }
+
+    .profile-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile-item {
+      margin-bottom: 20px;
+    }
+
+    .profile-item label {
+      font-weight: bold;
+    }
+
+    .text-effect {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+      /* Make the fields readonly */
+      pointer-events: none;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      .profile-card {
+        grid-template-columns: 1fr;
+      }
+    }
+    .resume {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .resume-container {
+      margin-top: 20px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      width: 300px;
+    }
+
+    .resume-img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Profile Page</h1>
+  </header>
+  <div class="container">
+    <div class="profile-card">
+      <div class="profile-image">
+        <img src="{% static 'C:\Users\Rajesh Pasupuleti\demoproject\project\static\profile.png' %}" alt="Profile Image">
+      </div>
+      
+      <div class="profile-details">
+        <div class="profile-item">
+          <label >Name:</label>
+          <div class="text-effect">
+            <span style="border:2px solid red;padding:5px;border-radius:9px ;font:bold;font-size:30px; ">{{ profile.name }}</span>
+          </div>
+        </div>
+        <div class="profile-item">
+          <label>Email:</label>
+          <input type="email" value="{{ profile.email }}" readonly>
+        </div>
+        <div class="profile-item">
+          <label>Education:</label>
+          <input type="text" value="{{ profile.degree }}" readonly>
+        </div>
+        <div class="profile-item">
+          <label>Skills:</label>
+          <textarea readonly>{{ profile.skills }}</textarea>
+        </div>
+        <div class="profile-item">
+          <label>Date of Birth:</label>
+          <input type="text" value="{{ profile.dob }}" readonly>
+        </div>
+        <div class="profile-item">
+          <label>Languages Known:</label>
+          <input type="text" value="{{ profile.languages }}" readonly>
+        </div>
+        <div class="profile-item">
+          <label>URLs:</label>
+          <textarea readonly>{{ profile.project_url }}</textarea>
+        </div>
+        <div class="profile-item resume">
+            <label>Resume:</label>
+            <div class="resume-container">
+              <img src="{{ profile.resume.url }}" alt="Resume" class="resume-img">
+              <a href="{{ profile.resume.url }}" download="resume.pdf">Download Resume</a>
+            </div>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+</body>
+</html>

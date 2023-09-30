@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static  'adminlogincss.css' %}" />
+    <script src="js.js"></script>
+  </head>
+  <body>
+    <form method="POST" action="{% url 'adminlogin' %}">
+      {% csrf_token %}
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-2"></div>
+          <div class="col-lg-6 col-md-8 login-box">
+            <div class="col-lg-12 login-key">
+              <i class="fa fa-key" aria-hidden="true"></i>
+            </div>
+            
+            <div class="col-lg-12 login-title">ADMIN PANEL</div>
+
+            <div class="col-lg-12 login-form">
+              <form id="loginForm">
+                <div class="form-group">
+                  <label class="form-control-label" style="color:#fff;margin-right:20px">USER ID</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="userid"
+                    name="userid"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-control-label" style="color:#fff;margin-right:20px">PASSWORD</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                  />
+                </div>
+
+                <div class="col-lg-12 login-btm">
+                  <div class="col-lg-6 login-text">
+                    <!-- Error Message -->
+                  </div>
+                  <div class="col-lg-6 login-button">
+                    <button type="submit" class="button" style="width:70px">LOGIN</button>
+                    <a href="{% url 'register_admin' %}" class="btn-outline-primary"
+                    style="color:#fff">New ? Create Account</a
+                    >
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-3 col-md-2"></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const loginForm = document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // Perform login logic here
+
+          // Reset form values
+          loginForm.reset();
+        });
+      </script>
+    </form>
+  </body>
+</html>

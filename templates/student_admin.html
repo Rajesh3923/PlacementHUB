@@ -1,0 +1,142 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>side_bar</title>
+    <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    <script src="https://kit.fontawesome.com/81d73e8e4d.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet"   href="{% static 'adminanalytics.css' %} ">
+</head>
+<body>
+    <div class="wrapper">
+        <section class="sidenav">
+            <span class="logo">Placemental Cell</span>
+            <ul class="nav-links">
+                <li>
+                    <a href="#">
+                     <i class='bx bx-home-alt-2'></i>
+                     <span class="title">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#drivedata">
+                      <i class="bx bx-bookmark"></i>
+                      <span class="title">Enrolled</span>
+                    </a>
+                  </li>
+                <li>
+                    <a href="#mailtoadmin">
+                        <i class='bx bx-chat'></i>
+                        <span class="title">Chats</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#analytics"><!--to redirect to certain page content ,assign the page div or section with "ID" and use that id here-->
+                        <i class='bx bx-book-open'></i>
+                        <span class="title">Report</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="adminlogin">
+                        <i class='bx bx-log-out'></i>
+                        <span class="title">Signout</span>
+                      </a>
+                </li>
+            </ul>
+        </section>
+        <section class="main-home">
+            <!-- Horizontal NAVBAR -->
+            <nav class="nav">
+                <ul class="nav-links">
+                  <li>
+                    <a href="{% url 'admin_profile' %}" class="profile-link">
+                      <i class="fa-solid fa-user"></i>
+                      Profile
+                    </a>
+                  </li>
+                </ul>
+            </nav>
+            <!-- Rest of the page content -->
+            <div class="main-container">
+                <!-- LEFT CONTENT -->
+                <div class="left-content">
+                    <!-- TITLE -->
+                    <div class="titlehome">
+                        Admin Gateway to Opportunities: 
+                    </div>
+                    <!-- SUB-TITLE -->
+                    <div class="sub-title">
+                        Unveil, Empower, Prosper....!
+                    </div>
+                </div>
+                <!-- RIGHT CONTENT -->
+                <div class="right-content">
+                    <img src="https://i.postimg.cc/B6rX1PcJ/Computer-Work.png" alt="hi">
+                </div>
+            </div> <br><hr>
+            <div class="drive-table" id="drivedata">
+                <span class="titlepkit">List of Students Applied for Drive</span><br>
+                <table>
+                    <tr>
+                        <th>Registration Number</th>
+                        <th>Name</th>
+                        <th>Programme </th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Gpa</th>
+                    </tr>
+                    {%for student in students%}
+                    <tr>
+                        <td>{{student.registrationNumber}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.degree}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.phone}}</td>
+                        <td>{{student.gpaBtech}}</td>
+            
+                    </tr>
+                    {%endfor%}
+            
+                </table>
+            </div><br><hr>
+            <!------------------------------------------------------>
+            <span class="titlepkit" id="analytics">Analytic Report</span><br>
+            <div class="container1" >
+                <div class="card" >
+                    <h2>Enrollment Details</h2>
+                    <p class="count">{{no_of_students}}</p>
+                    <p>students enrolled</p>
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <h2>Placement Details</h2>
+                    <p>Number of placements: <span class="placement-count">75</span></p>
+                </div>
+                <div class="card avg-card">
+                    <h2>Average Placement Package</h2>
+                    <p class="avg-package">5.8L</p>
+                </div>
+                
+            </div>
+             <!-------------------------------------------------------->
+            
+             
+        </section>
+        
+    </div>
+</body>
+  
+</html>
+

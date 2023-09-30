@@ -1,0 +1,273 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>side_bar</title>
+    <link rel="stylesheet" href="{% static 'student_dashboard.css' %} ">
+    <script src="https://kit.fontawesome.com/81d73e8e4d.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+</head>
+<body>
+    <div class="wrapper">
+        <section class="sidenav">
+            <span class="logo">Placemental Cell</span>
+            <ul class="nav-links">
+                <li>
+                    <a href="#">
+                     <i class='bx bx-home-alt-2'></i>
+                     <span class="title">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#company-cards-section">
+                      <i class="bx bx-bookmark"></i>
+                      <span class="title">Comp.</span>
+                    </a>
+                  </li>
+                <li>
+                    <a href="#mailtoadmin">
+                        <i class='bx bx-chat'></i>
+                        <span class="title">Chat</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#interview-preparation-section"><!--to redirect to certain page content ,assign the page div or section with "ID" and use that id here-->
+                        <i class='bx bx-book-open'></i>
+                        <span class="title">P Kit</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'studentlogin' %}">
+                        <i class='bx bx-log-out'></i>
+                        <span class="title">Signout</span>
+                      </a>
+                </li>
+            </ul>
+        </section>
+        <section class="main-home">
+            <!-- Horizontal NAVBAR -->
+            <nav class="nav">
+              <ul class="nav-links">
+                  <li>
+                      <a href="{% url 'student_profile' %}" class="profile-link">
+                          <i class="fa-solid fa-user"></i>
+                          Profile {{ userid.name }}
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+          
+            <!-- Rest of the page content -->
+            <div class="main-container">
+                <!-- LEFT CONTENT -->
+                <div class="left-content">
+                    <!-- TITLE -->
+                    <div class="titlehome">
+                    Welcome to the Gateway of Possibilities: 
+                    </div>
+                    <!-- SUB-TITLE -->
+                    <div class="sub-title">
+                     Discover Amazing Placement Opportunities and Take Charge of Your Future Today ...!
+                    </div>
+                </div>
+                <!-- RIGHT CONTENT -->
+                <div class="right-content">
+                    <img src="https://i.postimg.cc/B6rX1PcJ/Computer-Work.png" alt="hi">
+                </div>
+            </div> 
+            <div class="title-container" id="PKIT"><!--Provide the id for redirection-->
+                <h1 class="titlepkit">
+                    Improve Skills Using
+                    <span class="gradient-text">PKIT</span>
+                </h1>
+            </div> 
+            <div class="svg-container">
+              <img src="{% static "C:\Users\Rajesh Pasupuleti\demoproject\project\static\wbd - Copy.svg" %}" alt="SVG Image">
+            </div> 
+            <section class="main-home1" id="interview-preparation-section">
+                <div class="container">
+                    <h1 class="titlepkit">
+                        Interview Preparation</h1>
+                  <h2 class="section-heading"></h2>
+                  <div class="cards-container">
+                    <!-- Card 1: Top 150 Interview Questions -->
+                    <div class="card">
+                      <img src="https://i.postimg.cc/gkjF82z9/questions.png" alt="Top 150 Interview Questions" class="card-img">
+                      <div class="card-content">
+                        <h3 class="card-title">Top 150 Interview Questions</h3>
+                        <p class="card-description">Explore the top 150 interview questions to prepare for interviews.</p>
+                        <a href="https://www.example.com/top-150-interview-questions" class="card-link" target="_blank">Go to Questions</a>
+                      </div>
+                    </div>
+              
+                    <!-- Card 2: Learn DSA in One Go -->
+                    <div class="card">
+                      <img src="https://i.postimg.cc/D0VzjG29/dsa.png" alt="Learn DSA in One Go" class="card-img">
+                      <div class="card-content">
+                        <h3 class="card-title">Learn DSA in One Go</h3>
+                        <p class="card-description">Master Data Structures and Algorithms in one comprehensive course.</p>
+                        <a href="https://www.example.com/learn-dsa-in-one-go" class="card-link" target="_blank">Go to DSA Course</a>
+                      </div>
+                    </div>
+              
+                    <!-- Card 3: Frequently Asked Questions -->
+                    <div class="card">
+                      <img src="https://i.postimg.cc/0Np7pqBg/faq.png" alt="Frequently Asked Questions" class="card-img">
+                      <div class="card-content">
+                        <h3 class="card-title">Frequently Asked Questions</h3>
+                        <p class="card-description">Find answers to the most common interview-related queries.</p>
+                        <a href="https://www.example.com/faq" class="card-link" target="_blank">Go to FAQ</a>
+                      </div>
+                    </div>
+                    <div class="card">
+                        <img class="card-img" src="path/to/gfg_sde_sheet_img.jpg" alt="GFG SDE Sheet">
+                        <div class="card-content">
+                          <h3 class="card-title">GFG SDE Sheet</h3>
+                          <p class="card-description">Practice GeeksforGeeks SDE Sheet questions.</p>
+                          <a class="card-link" href="https://practice.geeksforgeeks.org/explore?page=1&sprint=a663236c31453b969852f9ea22507634&sortBy=submissions&sprint_name=SDE%20Sheet&utm_medium=main_header&utm_campaign=practice_header" target="_blank">Learn More</a>
+                        </div>
+                      </div>
+                      
+                      <!-- Card 5: HackerRank Interview Kit -->
+                      <div class="card">
+                        <img class="card-img" src="path/to/hackerrank_interview_kit_img.jpg" alt="HackerRank Interview Kit">
+                        <div class="card-content">
+                          <h3 class="card-title">HackerRank Interview Kit</h3>
+                          <p class="card-description">Prepare with the HackerRank Interview Preparation Kit.</p>
+                          <a class="card-link" href="https://www.hackerrank.com/interview/interview-preparation-kit" target="_blank">Learn More</a>
+                        </div>
+                      </div>
+                      
+                      <!-- Card 6: Company Interview Corner -->
+                      <div class="card">
+                        <img class="card-img" src="path/to/company_interview_corner_img.jpg" alt="Company Interview Corner">
+                        <div class="card-conte  nt">
+                          <h3 class="card-title">Company Interview Corner</h3>
+                          <p class="card-description">Explore company-specific interview resources on GeeksforGeeks.</p>
+                          <a class="card-link" href="https://www.geeksforgeeks.org/company-interview-corner/" target="_blank">Learn More</a>
+                        </div>
+                      </div>
+              
+                    <!-- Add more cards here if needed -->
+                  </div>
+                </div>
+              </section>
+              
+            <section class="main-home2" id="company-cards-section">
+                <div class="container">
+                    <h1 class="titlepkit">
+                        List of Companies</h1>
+                    <h2 class="companies-heading"></h2>
+                    <div class="company-list">
+                      <div class="company-card">
+                        <div class="company-logo">
+                          <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="company-name">Company Name</div>
+                        <div class="company-role">Job Role</div>
+                        <div class="company-package">Salary Package</div>
+                        <div class="company-skills">List of Skills</div>
+                        <button class="apply-btn" onclick="showPopup()">Apply</button>
+                      </div>
+                      <div class="company-card">
+                        <div class="company-logo">
+                          <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="company-name">Company Name</div>
+                        <div class="company-role">Job Role</div>
+                        <div class="company-package">Salary Package</div>
+                        <div class="company-skills">List of Skills</div>
+                        <button class="apply-btn" onclick="showPopup()">Apply</button>
+                      </div>
+                      <div class="company-card">
+                        <div class="company-logo">
+                          <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="company-name">Company Name</div>
+                        <div class="company-role">Job Role</div>
+                        <div class="company-package">Salary Package</div>
+                        <div class="company-skills">List of Skills</div>
+                        <button class="apply-btn" onclick="showPopup()">Apply</button>
+                      </div>
+                      <div class="company-card">
+                        <div class="company-logo">
+                          <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="company-name">Company Name</div>
+                        <div class="company-role">Job Role</div>
+                        <div class="company-package">Salary Package</div>
+                        <div class="company-skills">List of Skills</div>
+                        <button class="apply-btn" onclick="showPopup()">Apply</button>
+                      </div>
+                      <div class="company-card">
+                        <div class="company-logo">
+                          <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="company-name">Company Name</div>
+                        <div class="company-role">Job Role</div>
+                        <div class="company-package">Salary Package</div>
+                        <div class="company-skills">List of Skills</div>
+                        <button class="apply-btn" onclick="showPopup()">Apply</button>
+                      </div>
+                      <div class="company-card">
+                        <div class="company-logo">
+                          <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="company-name">Company Name</div>
+                        <div class="company-role">Job Role</div>
+                        <div class="company-package">Salary Package</div>
+                        <div class="company-skills">List of Skills</div>
+                        <button class="apply-btn" onclick="showPopup()">Apply</button>
+                      </div>
+                      <!-- Add more company cards here (similar to the first card) -->
+                    </div>
+                  </div>
+                  
+                  <div class="overlay" id="overlay"></div>
+                  <div class="popup-container" id="popupContainer">
+                    <form class="file-upload-container">
+                      <label class="file-upload-label">Upload Resume:</label>
+                      <input type="file" class="file-upload-input" />
+                      <button class="submit-btn">Submit</button>
+                    </form>
+                  </div>
+            </section>
+            <h1 class="titlepkit">
+                Contact Admin</h1>
+            <div class="svg-container">
+              <img src="{% static "C:\Users\Rajesh Pasupuleti\demoproject\project\static\Contact us-amico (2).svg" %}" alt="SVG Image">
+            </div> 
+            <div class="chat-link" id="mailtoadmin">
+                <a href="mailto:adminvasavi@gmail.com">Contact Admin</a>
+            </div>
+             
+        </section>
+        
+    </div>
+</body>
+  <script>
+    function showPopup() {
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("popupContainer").style.display = "block";
+    }
+
+    function hidePopup() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("popupContainer").style.display = "none";
+    }
+  </script>
+</html>
+
+
