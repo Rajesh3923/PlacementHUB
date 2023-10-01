@@ -5,6 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile Page</title>
+   <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -165,8 +172,7 @@
         <div class="profile-item resume">
             <label>Resume:</label>
             <div class="resume-container">
-              <img src="{{ profile.resume.url }}" alt="Resume" class="resume-img">
-              <a href="{{ profile.resume.url }}" download="resume.pdf">Download Resume</a>
+              <a href="{{ profile.resume.url }}" class="text-decoration-none text-danger" download="resume.pdf">Download Resume</a>
             </div>
           </div>
           

@@ -78,6 +78,25 @@ def student_dashboard(request):
     student1=Studentnew.objects.all()
     context={'userid':student1}
     return render (request,"student_dashboard.html",context)
+#-------------------------------------------------------------------
+def upload_resume(request):
+    if request.method == 'POST':
+        # Get the uploaded resume file
+        resume_file = request.FILES.get('resume')
+
+        # Ensure the user is logged in
+        if request.user.is_authenticated:
+            # Get the current user
+            current_user = request.user.username
+
+            # Get or create the Studentnew model for the current user
+            student, created = Studentnew.objects.get_or_create(registrationNumber=current_user)
+
+            # Update the resume field with the uploaded resume
+            student.resume = resume_file
+            student.save()
+
+    return redirect('student_dashboard')
 
 
 #----------------------REGISTRATION FORM--------------------

@@ -15,6 +15,8 @@ urlpatterns = [
     path('student_admin/adminlogin/',views.adminlogin,name='adminlogin'),
     path('student_profile/',views.student_profile,name='student_profile'),
     path('register_admin/',views.register_admin,name='register_admin'),
+    path('upload_resume/', views.upload_resume, name='upload_resume'),
+
 
 
 

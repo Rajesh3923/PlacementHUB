@@ -14,6 +14,8 @@ class Studentnew(models.Model):
     project_url = models.URLField()
     skills = models.CharField(max_length=100, default='')
     languages = models.IntegerField(null=True)
+    resume = models.FileField(upload_to='student_resumes/',default='')
+
     
 
     def __str__(self):
