@@ -1,13 +1,12 @@
 body {
-  background: #222D32;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
 h1 {
   text-align: center;
-  color: #ECF0F5;
+  color: black;
   margin-top: 50px;
 }
 
@@ -15,7 +14,7 @@ form {
   width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background: #1A2226;
+
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -23,7 +22,7 @@ form {
 label {
   display: block;
   margin-bottom: 10px;
-  color: #ECF0F5;
+  color: black;
 }
 
 input[type="email"],
@@ -32,7 +31,7 @@ input[type="password"] {
   padding: 10px;
   border: none;
   border-radius: 3px;
-  background: #1A2226;
+  background: #1a2226;
   color: #0b0b0bc2;
   margin-bottom: 20px;
 }
@@ -46,7 +45,7 @@ input[type="submit"] {
   border-radius: 15px;
   background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
   background-size: 300%;
-  color: #fff;
+  color: black;
   font-weight: bold;
   letter-spacing: 1px;
   animation: button-effect 8s linear infinite;
@@ -59,6 +58,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-position: 400%;
   cursor: pointer;
+  
 }
 
 @keyframes button-effect {
@@ -69,5 +69,3 @@ input[type="submit"]:hover {
     background-position: 400%;
   }
 }
-
-
