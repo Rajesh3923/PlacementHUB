@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import  settings
-from app.views import studentlogin,stureg,success,student_admin,register_admin,successadmin,admin_profile,adminlogin,student_dashboard,student_profile
+from app.views import studentlogin,stureg,success,student_admin,register_admin,successadmin,admin_profile,adminlogin,student_dashboard,student_profile,admin_add_company
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,6 +23,8 @@ urlpatterns = [
     path('student_dashboard',student_dashboard, name='student_dashboard'),
     path('student_profile',student_profile,name='student_profile'),
     path('register_admin/',register_admin,name='register_admin'),
+    path('admin_add_company/',admin_add_company,name='admin_add_company'),
+
 
 
 

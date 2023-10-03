@@ -10,7 +10,6 @@
       href="{% static 'bootstrap.min.css' %}"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous" />
-  
 
     <script
       src="https://kit.fontawesome.com/81d73e8e4d.js"
@@ -28,6 +27,221 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="{% static 'adminanalytics.css' %} " />
+    <style>
+            {% comment %} body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            } {% endcomment %}
+
+            .comp-container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+            }
+
+            .comp-heading {
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .comp-label {
+                font-weight: bold;
+            }
+
+            .comp-input-text,
+            .comp-textarea,
+            .comp-input-file {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .comp-submit-button {
+                background-color: #007BFF;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .comp-submit-button:hover {
+                background-color: #0056b3;
+            }
+            .demo{ font-family: 'Noto Sans', sans-serif; }
+      .panel{
+          background: linear-gradient(to right, #2980b9, #2c3e50);
+          padding: 0;
+          border-radius: 10px;
+          border: none;
+          box-shadow: 0 0 0 5px rgba(0,0,0,0.05),0 0 0 10px rgba(0,0,0,0.05);
+      }
+      .panel .panel-heading{
+          padding: 20px 15px;
+          border-radius: 10px 10px 0 0;
+          margin: 0;
+      }
+      .panel .panel-heading .title{
+          color: #fff;
+          font-size: 28px;
+          font-weight: 500;
+          text-transform: capitalize;
+          line-height: 40px;
+          margin: 0;
+      }
+      .panel .panel-heading .btn{
+          color: rgba(255,255,255,0.5);
+          background: transparent;
+          font-size: 16px;
+          text-transform: capitalize;
+          border: 2px solid #fff;
+          border-radius: 50px;
+          transition: all 0.3s ease 0s;
+      }
+      .panel .panel-heading .btn:hover{
+          color: #fff;
+          text-shadow: 3px 3px rgba(255,255,255,0.2);
+      }
+      .panel .panel-heading .form-control{
+          color: #fff;
+          background-color: transparent;
+          width: 35%;
+          height: 40px;
+          border: 2px solid #fff;
+          border-radius: 20px;
+          display: inline-block;
+          transition: all 0.3s ease 0s;
+      }
+      .panel .panel-heading .form-control:focus{
+          background-color: rgba(255,255,255,0.2);
+          box-shadow: none;
+          outline: none;
+      }
+      .panel .panel-heading .form-control::placeholder{
+          color: rgba(255,255,255,0.5);
+          font-size: 15px;
+          font-weight: 500;
+      }
+      .panel .panel-body{ padding: 0; }
+      .panel .panel-body .table thead tr th{
+          color: #fff;
+          background-color: rgba(255, 255, 255, 0.2);
+          font-size: 16px;
+          font-weight: 500;
+          text-transform: uppercase;
+          padding: 12px;
+          border: none;
+      }
+      .panel .panel-body .table tbody tr td{
+          color: #fff;
+          font-size: 15px;
+          padding: 10px 12px;
+          vertical-align: middle;
+          border: none;
+      }
+      .panel .panel-body .table tbody tr:nth-child(even){ background-color: rgba(255,255,255,0.05); }
+      .panel .panel-body .table tbody .action-list{
+          padding: 0;
+          margin: 0;
+          list-style: none;
+      }
+      .panel .panel-body .table tbody .action-list li{
+          display: inline-block;
+          margin: 0 5px;
+      }
+      .panel .panel-body .table tbody .action-list li a{
+          color: #fff;
+          font-size: 15px;
+          position: relative;
+          z-index: 1;
+          transition: all 0.3s ease 0s;
+      }
+      .panel .panel-body .table tbody .action-list li a:hover{ text-shadow: 3px 3px 0 rgba(255,255,255,0.3); }
+      .panel .panel-body .table tbody .action-list li a:before,
+      .panel .panel-body .table tbody .action-list li a:after{
+          content: attr(data-tip);
+          color: #fff;
+          background-color: #111;
+          font-size: 12px;
+          padding: 5px 7px;
+          border-radius: 4px;
+          text-transform: capitalize;
+          display: none;
+          transform: translateX(-50%);
+          position: absolute;
+          left: 50%;
+          top: -32px;
+          transition: all 0.3s ease 0s;
+      }
+      .panel .panel-body .table tbody .action-list li a:after{
+          content: '';
+          height: 15px;
+          width: 15px;
+          padding: 0;
+          border-radius: 0;
+          transform: translateX(-50%) rotate(45deg);
+          top: -18px;
+          z-index: -1;
+      }
+      .panel .panel-body .table tbody .action-list li a:hover:before,
+      .panel .panel-body .table tbody .action-list li a:hover:after{
+          display: block;
+      }
+      .panel .panel-footer{
+          color: #fff;
+          background-color: transparent;
+          padding: 15px;
+          border: none;
+      }
+      .panel .panel-footer .col{ line-height: 35px; }
+      .pagination{ margin: 0; }
+      .pagination li a{
+          color: #fff;
+          background-color: transparent;
+          border: 2px solid transparent;
+          font-size: 18px;
+          font-weight: 500;
+          text-align: center;
+          line-height: 31px;
+          width: 35px;
+          height: 35px;
+          padding: 0;
+          margin: 0 3px;
+          border-radius: 50px;
+          transition: all 0.3s ease 0s;
+      }
+      .pagination li a:hover{
+          color: #fff;
+          background-color: transparent;
+          border-color: rgba(255,255,255,0.2);
+      }
+      .pagination li a:focus,
+      .pagination li.active a,
+      .pagination li.active a:hover{
+          color: #fff;
+          background-color: transparent;
+          border-color: #fff;
+      }
+      .pagination li:first-child a,
+      .pagination li:last-child a{
+          border-radius: 50%;
+      }
+      @media only screen and (max-width:767px){
+          .panel .panel-heading .title{
+              text-align: center;
+              margin: 0 0 10px;
+          }
+          .panel .panel-heading .btn_group{ text-align: center; }
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -37,7 +251,7 @@
           <li>
             <a href="#">
               <i class="bx bx-home-alt-2"></i>
-              <span class="title">Home</span>
+              <span class="title">Home&nbsp&nbsp</span>
             </a>
           </li>
           <li>
@@ -49,14 +263,21 @@
           <li>
             <a href="#mailtoadmin">
               <i class="bx bx-chat"></i>
-              <span class="title">Chats</span>
+              <span class="title">Chats&nbsp&nbsp</span>
             </a>
           </li>
           <li>
             <a href="#analytics"
               ><!--to redirect to certain page content ,assign the page div or section with "ID" and use that id here-->
               <i class="bx bx-book-open"></i>
-              <span class="title">Report</span>
+              <span class="title">&nbspReport&nbsp</span>
+            </a>
+          </li>
+          <li>
+            <a href="#vacancy"
+              ><!--to redirect to certain page content ,assign the page div or section with "ID" and use that id here-->
+              <i class="bx bx-book-open"></i>
+              <span class="title">Vacancy</span>
             </a>
           </li>
           <li>
@@ -67,7 +288,7 @@
           </li>
         </ul>
       </section>
-      <section class="main-home">
+      <section class="main-home ">
         <!-- Horizontal NAVBAR -->
         <nav class="nav">
           <ul class="nav-links">
@@ -97,34 +318,105 @@
         </div>
         <br />
         <hr />
-        <div class="drive-table table-responsive" id="drivedata">
-          <span class="titlepkit">List of Students Applied for Drive</span
-          ><br />
-          <table>
-            <tr>
-              <th>Registration Number</th>
-              <th>Name</th>
-              <th>Programme</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Gpa</th>
-              <th>Resume</th>
-            </tr>
-            {%for student in students%}
-            <tr>
-              <td>{{student.registrationNumber}}</td>
-              <td>{{student.name}}</td>
-              <td>{{student.degree}}</td>
-              <td>{{student.email}}</td>
-              <td>{{student.phone}}</td>
-              <td>{{student.gpaBtech}}</td>
-              <td>
-                <a href="{{ student.resume }}" style="color: #fff; target="_blank"" download>View</a>
-              </td>
-            </tr>
-            {%endfor%}
-          </table>
+        <!--------------table--------------------->
+        <span class="titlepkit" id="drivedata">Enrolled Students</span><br />
+
+        <div class="container bg-white mt-0">
+          <div class="row">
+            <div class="col-md-offset-1 col-md-12">
+              <div class="panel">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col col-sm-3 col-xs-12">
+                      <h4 class="title">Data <span>List</span></h4>
+                    </div>
+                    <div class="col-sm-9 col-xs-12 text-right">
+                      <div class="btn_group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Search" />
+                        <button class="btn btn-default" title="Reload">
+                          <i class="fa fa-sync-alt"></i>
+                        </button>
+                        <button class="btn btn-default" title="Pdf">
+                          <i class="fa fa-file-pdf"></i>
+                        </button>
+                        <button class="btn btn-default" title="Excel">
+                          <i class="fas fa-file-excel"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-body table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Registration Number</th>
+                        <th>Name</th>
+                        <th>Programme</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Gpa</th>
+                        <th>Resume</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for student in students %}
+                      <tr>
+                        <td>{{ student.registrationNumber }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.degree }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.phone }}</td>
+                        <td>{{ student.gpaBtech }}</td>
+                        <td>
+                          <ul class="action-list">
+                            <li>
+                              <a
+                                href="{{ student.resume }}"
+                                data-tip="edit"
+                                style="color: #fff"
+                                target="_blank"
+                                download
+                                >View</a
+                              >
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <div class="panel-footer">
+                  <div class="row">
+                    <div class="col col-sm-6 col-xs-6">
+                      showing <b>5</b> out of <b>25</b> entries
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                      <ul class="pagination hidden-xs pull-right">
+                        <li><a href="#"><</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">></a></li>
+                      </ul>
+                      <ul class="pagination visible-xs pull-right">
+                        <li><a href="#"><</a></li>
+                        <li><a href="#">></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
         <br />
         <hr />
         <!------------------------------------------------------>
@@ -143,6 +435,51 @@
             <h2>Average Placement Package</h2>
             <p class="avg-package">5.8L</p>
           </div>
+        </div>
+        <span class="titlepkit mt-5" id="vacancy">Add Companies Here</span
+        ><br />
+        <div class="comp-container ml-1">
+          <form
+            method="post"
+            enctype="multipart/form-data"
+            action="{% url 'admin_add_company' %}">
+            {% csrf_token %}
+            <label for="comp-logo" class="comp-label">Logo:</label>
+            <input
+              type="file"
+              name="logo"
+              class="comp-input-file"
+              required /><br />
+            <label for="comp-name" class="comp-label">Company Name:</label>
+            <input
+              type="text"
+              name="name"
+              class="comp-input-text"
+              required /><br />
+            <label for="comp-job-role" class="comp-label">Job Role:</label>
+            <input
+              type="text"
+              name="job_role"
+              class="comp-input-text"
+              required /><br />
+            <label for="comp-salary-package" class="comp-label"
+              >Salary Package:</label
+            >
+            <input
+              type="text"
+              name="salary_package"
+              class="comp-input-text"
+              required /><br />
+            <label for="comp-skills-required" class="comp-label"
+              >Skills Required:</label
+            >
+            <textarea
+              name="skills_required"
+              class="comp-textarea"
+              required></textarea
+            ><br />
+            <button type="submit" class="comp-submit-button">Add</button>
+          </form>
         </div>
         <!-------------------------------------------------------->
       </section>

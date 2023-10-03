@@ -68,7 +68,7 @@
 }
 
 .nav-links {
-  margin-left: -10px;
+  margin-left: 15px;
   width: 100%;
   display: flex;
   flex-direction: column; /* Arrange items in a column */

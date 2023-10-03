@@ -31,20 +31,6 @@ class Studentnew(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class AdminRegistration(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=50)
@@ -60,3 +46,14 @@ class AdminRegistration(models.Model):
         return self.admin_id
 
 
+
+#----------------------------companies data 
+class Company(models.Model):
+    logo = models.ImageField(upload_to='company_logos/')
+    name = models.CharField(max_length=255)
+    job_role = models.CharField(max_length=255)
+    salary_package = models.DecimalField(max_digits=10, decimal_places=2)
+    skills_required = models.TextField()
+
+    def __str__(self):
+        return self.name

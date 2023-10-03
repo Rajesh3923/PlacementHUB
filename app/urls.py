@@ -6,6 +6,7 @@ urlpatterns = [
     path('student_dashboard/',views.student_dashboard,name='student_dashboard'),
     path('studentlogin/student_dashboard/',views.student_dashboard,name='student_dashboard'),
     path('studentlogin/stureg/', views.stureg, name='stureg'),
+    path('studentlogin/', views.studentlogin, name='studentlogin'),
     path('success/', views.success, name='success'),
     path('adminlogin/',views.adminlogin,name='adminlogin'),
     path('adminlogin/register_admin/',views.register_admin,name='register_admin'),
@@ -16,6 +17,7 @@ urlpatterns = [
     path('student_profile/',views.student_profile,name='student_profile'),
     path('register_admin/',views.register_admin,name='register_admin'),
     path('upload_resume/', views.upload_resume, name='upload_resume'),
+    path('admin_add_company/',views.admin_add_company,name='admin_add_company'),
 
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Studentnew, AdminRegistration
+from .models import Studentnew, AdminRegistration,Company
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
@@ -218,7 +218,27 @@ def register_admin(request):
     
     return render(request, 'register_admin.html')
 
+#companies view function --------------------------------------
+def admin_add_company(request):
+    if request.method == 'POST':
+        logo = request.FILES['logo']
+        name = request.POST['name']
+        job_role = request.POST['job_role']
+        salary_package = request.POST['salary_package']
+        skills_required = request.POST['skills_required']
+        Company.objects.create(
+            logo=logo,
+            name=name,
+            job_role=job_role,
+            salary_package=salary_package,
+            skills_required=skills_required
+        )
+        return redirect('student_admin')
+    return render(request, 'studentlogin.html')
 
+def student_dashboard(request):
+    companies = Company.objects.all()
+    return render(request, 'student_dashboard.html', {'companies': companies})
 
 
 
