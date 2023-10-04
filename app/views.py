@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Studentnew, AdminRegistration,Company
+from .models import Studentnew, AdminRegistration,Company,StudentQuery
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
@@ -241,8 +241,30 @@ def student_dashboard(request):
     return render(request, 'student_dashboard.html', {'companies': companies})
 
 
+#--------------------------Student contact form------------
+def student_dashboardQuery(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        query = request.POST.get('Query')
+        
+        # Use the create method to save the data to the model
+        StudentQuery.objects.create(email=email, query=query)
+        
+        # Redirect or return a response as needed
+        return redirect('student_dashboard')  # Redirect to a success page
+
+    return render(request, 'student_dashboard.html')
 
 
+
+#--------------------------studentqueryiinto admin page-----------
+def student_adminissues(request):
+    # Fetch data from the StudentQuery model
+    student_queries = StudentQuery.objects.all().order_by('-arrival_time')
+    print(student_queries)
+    # Pass the data to the "student_admin" template
+    context = {'issues': student_queries}
+    return render(request, 'student_adminissues.html', context)
 
 
 

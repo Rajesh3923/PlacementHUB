@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 
 class Studentnew(models.Model):
     registrationNumber = models.CharField(primary_key=True,max_length=10,default='')
@@ -57,3 +59,16 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+#------------contact form-----------------
+class StudentQuery(models.Model):
+    email = models.EmailField()
+    query = models.TextField() 
+    arrival_time = models.DateTimeField(default=timezone.now)
+
+    
+
+    def __str__(self):
+        return self.email

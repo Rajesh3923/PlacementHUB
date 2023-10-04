@@ -698,7 +698,7 @@ ol, ul {
               </div>
             </div>
               <div class="col-4 mt-5 ">
-                <form method="post">
+                <form method="post" action="{% url "student_dashboard" %}">
                   {% csrf_token %}
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
@@ -719,11 +719,14 @@ ol, ul {
                       type="text"
                       class="form-control"
                       id="exampleInputPassword1"
-                      name="password"
+                      name="Query"
                       placeholder="Raise Issue" />
                   </div>
+                  
                  
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <span id="checkmark" style="display: none; color: green;">&#10004;</span>
+
                 </form>
               </div>
             </div>
@@ -838,5 +841,29 @@ ol, ul {
       });
     });
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        const checkmark = document.getElementById('checkmark');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Disable the submit button to prevent multiple submissions
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+
+            // Simulate a successful submission (you can replace this with your actual form submission logic)
+            setTimeout(function() {
+                // Hide the form
+                form.style.display = 'none';
+                
+                // Show the checkmark
+                checkmark.style.display = 'inline';
+            }, 2000);  // Replace with the desired delay in milliseconds
+        });
+    });
+</script>
+
   {% endblock %}
 </html>

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import  settings
-from app.views import studentlogin,stureg,success,student_admin,register_admin,successadmin,admin_profile,adminlogin,student_dashboard,student_profile,admin_add_company
+from app.views import studentlogin,stureg,success,student_admin,register_admin,successadmin,admin_profile,adminlogin,student_dashboard,student_profile,admin_add_company,student_dashboardQuery,student_adminissues
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -16,11 +16,13 @@ urlpatterns = [
     path('adminlogin/register_admin/',register_admin,name="register_admin"),
     path('student_admin/adminlogin/',adminlogin,name='adminlogin'),
     path('student_admin/',student_admin,name='student_admin'),
+    path('student_adminissues/',student_adminissues,name='student_adminisues'),
     path('student_admin/admin_profile/',admin_profile,name='admin_profile'),
     path('adminlogin/',adminlogin,name='adminlogin'),
     path('/',studentlogin,name='studentlogin'),
     path('studentlogin/student_dashboard',student_dashboard, name='student_dashboard'),
     path('student_dashboard',student_dashboard, name='student_dashboard'),
+    path('student_dashboard/',student_dashboardQuery,name='student_dashboard'),
     path('student_profile',student_profile,name='student_profile'),
     path('register_admin/',register_admin,name='register_admin'),
     path('admin_add_company/',admin_add_company,name='admin_add_company'),

@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Issues</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+      /* Custom CSS for the table */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      /* Custom CSS for the accordion */
+      .accordion-item {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>Student Issues</h2>
+      {% for issue in issues %}
+      <div class="accordion accordion-item" id="accordion{{ forloop.counter }}">
+        <div class="card">
+          <div class="card-header" id="heading{{ forloop.counter }}">
+            <h2 class="mb-0">
+              <button
+                class="btn btn-link"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapse{{ forloop.counter }}"
+                aria-expanded="true"
+                aria-controls="collapse{{ forloop.counter }}">
+                {{ issue.email }}
+              </button>
+            </h2>
+          </div>
+
+          <div
+            id="collapse{{ forloop.counter }}"
+            class="collapse"
+            aria-labelledby="heading{{ forloop.counter }}"
+            data-parent="#accordion{{ forloop.counter }}">
+            <div class="card-body">
+              <p>
+                <strong>Email:</strong
+                >
+                {{ issue.email }}<a href="mailto:pasupuletirajesh460@gmail.com" class="ml-2 mt-2">-<i class='bx bxl-gmail'></i></a>
+              </p>
+              <p><strong>Query:</strong> {{ issue.query }}</p>
+              <p><strong>Phone Number:</strong> {{ issue.phone_number }}</p>
+              <p><strong>Raised :</strong> {{ issue.arrival_time }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
