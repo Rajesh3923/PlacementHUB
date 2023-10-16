@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>side_bar</title>
+    <link rel="stylesheet" href="{% static 'student_dashboard.css' %} " />
+    <link rel="stylesheet" href="{% static 'applied.css' %} " />
+
+    <script
+      src="https://kit.fontawesome.com/81d73e8e4d.js"
+      crossorigin="anonymous"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'owlcarousel/owl.carousel.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'owlcarousel/owl.theme.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'owlcarousel/owl.transitions.css' %}" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <section class="main-home2" id="company-cards-section">
+      <div class="container">
+        <h1 class="titlepkit">Companies Matching Your Skill Set</h1>
+        <h2 class="companies-heading"></h2>
+        <div class="company-list">
+          {% for company in matching_companies %}
+          <div class="company-card">
+            <div class="company-logo">
+              <!-- Use the company's logo or icon here -->
+              <img src="{{ company.logo.url }}" alt="{{ company.name }} Logo" />
+            </div>
+            <div class="company-name">{{ company.name }}</div>
+            <div class="company-role">
+              Job-role-<strong>{{ company.job_role }}</strong>
+            </div>
+            <div class="company-package">
+              Salary(exp)-<strong>{{ company.salary_package }}</strong>
+            </div>
+            <div class="company-skills">
+              Skills-<strong>{{ company.skills_required }}</strong>
+            </div>
+            <button class="apply-btn" onclick="showPopup()">Apply</button>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="overlay" id="overlay" style="display: none"></div>
+
+      <div class="popup-container" id="popupContainer" style="display: none">
+        <form
+          class="file-upload-container"
+          method="post"
+          enctype="multipart/form-data"
+          action="{% url 'applied_upload_resume' %}">
+          {% csrf_token %}
+          <label class="file-upload-label"
+            >Upload Resume:{{ company.name }}</label
+          >
+          <div class="input-group flex-nowrap mb-3">
+            <span class="input-group-text" id="addon-wrapping">@</span>
+            <input
+              type="text"
+              class="form-control"
+              name="company_name"
+              placeholder="Comp ID"
+              aria-label="Username"
+              aria-describedby="addon-wrapping" />
+          </div>
+
+          <input type="file" class="file-upload-input" name="resume" />
+          <button type="submit" class="submit-btn">Apply</button>
+        </form>
+      </div>
+    </section>
+  </body>
+  <script>
+    // Function to show the popup
+    function showPopup() {
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("popupContainer").style.display = "block";
+
+      // Add an event listener to the overlay to close the popup when clicked outside
+      document.getElementById("overlay").addEventListener("click", hidePopup);
+    }
+
+    // Function to hide the popup
+    function hidePopup() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("popupContainer").style.display = "none";
+
+      // Remove the event listener from the overlay
+      document
+        .getElementById("overlay")
+        .removeEventListener("click", hidePopup);
+    }
+  </script>
+</html>

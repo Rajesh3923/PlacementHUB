@@ -36,7 +36,11 @@
       .nav-links {
       margin-left: 11px;
     }
-      /* testimonals*/
+      
+    .company img {
+       max-width: 50px;}
+    
+    /* testimonals*/
 
       .testimonial {
         padding: 35px 50px;
@@ -263,12 +267,12 @@ ol, ul {
     margin: 0;
     padding: 0;
 }
-    </style>
+</style>
   </head>
   <body>
     <div class="wrapper">
       <section class="sidenav">
-        <span class="logo">Placemental Cell</span>
+        <span class="logo" onclick=window.location.reload()>Placemental Cell</span>
         <ul class="nav-links">
           <li>
             <a href="#">
@@ -280,6 +284,12 @@ ol, ul {
             <a href="#company-cards-section">
               <i class="bx bx-bookmark"></i>
               <span class="title">Comp &nbsp</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url "match" %}" target=_blank>
+              <i class='bx bx-lock-open-alt' ></i>
+              <span class="title">Match'd</span>
             </a>
           </li>
           <li>
@@ -302,7 +312,7 @@ ol, ul {
             </a>
           </li>
           <li>
-            <a href="{% url 'studentlogin' %}">
+            <a href="{% url 'logout_user' %}">
               <i class="bx bx-log-out"></i>
               <span class="title">Signout</span>
             </a>
@@ -562,82 +572,31 @@ ol, ul {
             </form>
           </div>
         </section>
-        <section class="main-home2" id="company-cards-section">
-          <div class="container">
-            <h1 class="titlepkit">Companies Matching Your Skill Set</h1>
-            <h2 class="companies-heading"></h2>
-            <div class="company-list">
-              {% for company in companies %}
-              <div class="company-card">
-                <div class="company-logo">
-                  <!-- Use the company's logo or icon here -->
-                  <img
-                    src="{{ company.logo.url }}"
-                    alt="{{ company.name }} Logo" />
-                </div>
-                <div class="company-name">{{ company.name }}</div>
-                <div class="company-role">{{ company.job_role }}</div>
-                <div class="company-package">{{ company.salary_package }}</div>
-                <div class="company-skills">{{ company.skills_required }}</div>
-                <button class="apply-btn" onclick="showPopup()">Apply</button>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-
-          <div class="overlay" id="overlay" style="display: none"></div>
-          <div
-            class="popup-container"
-            id="popupContainer"
-            style="display: none">
-            <form
-              class="file-upload-container"
-              method="post"
-              enctype="multipart/form-data"
-              action="{% url 'upload_resume' %}">
-              {% csrf_token %}
-              <label class="file-upload-label">Upload Resume:</label>
-              <input type="file" class="file-upload-input" name="resume" />
-              <button type="submit" class="submit-btn">Apply</button>
-            </form>
-          </div>
+        
+      <div id="applied">
+    <h1 class="titlepkit mt-5">Applied Companies</h1>
+    <div class="company-listed">
+        <section class="applied-companies">
+            <ul class="list-unstyled">
+                {% for item in appliedCompanies %}
+                <li class="company">
+                    <img src="{% static "company_logos/9247732.png" %}"  alt="Google" /> <!-- Keep the logo as it is -->
+                    
+                    <div class="company-info">
+                        <h3>{{ item.name }}</h3> <!-- Display the company name from the model -->
+                        <p>Package:&nbsp<small> To be announced soon...</small> </p> <!-- You can add relevant data from the model here -->
+                        <p>Drive Date:&nbsp<small> To be announced soon...</small></p> <!-- You can add relevant data from the model here -->
+                      
+                        </p> <!-- You can add relevant data from the model here -->
+                        <a href="{{ item.resume.url }}" target="_blank">View Resume</a> <!-- Display the resume file as a link -->
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </section>
+    </div>
+</div>
 
-        <div id="applied">
-          <h1 class="titlepkit mt-5">Applied Companies</h1>
-          <div class="company-listed">
-            <section class="applied-companies">
-              <ul class="list-unstyled">
-                <li class="company">
-                  <img src="{% static "google.png" %}" alt="Google" />
-                  <div class="company-info">
-                    <h3>Google Technology Company</h3>
-                    <p>Package: 8 lacs - 10 lacs per annum</p>
-                    <p>Drive Date: 28 Oct, 2023</p>
-                    <p>
-                      Designation: Software Engineer (PHP, Java, Full Stack),
-                      Software Tester, Business Analyst
-                    </p>
-                    <a href="https://example.com/google-drive">View</a>
-                  </div>
-                </li>
-                <li class="company">
-                  <img src="{% static "cisco.png" %}" alt="Cisco" />
-                  <div class="company-info">
-                    <h3>CISCO</h3>
-                    <p>Package: 8 lacs 10 lacs per annum</p>
-                    <p>Drive Date: 28 Oct, 2023</p>
-                    <p>
-                      Designation: Software Engineer (PHP, Java, Full Stack),
-                      Software Tester, Business Analyst
-                    </p>
-                    <a href="https://example.com/cisco-drive">View</a>
-                  </div>
-                </li>
-              </ul>
-            </section>
-          </div>
-        </div>
 
         <div class="demo">
           <div class="container">

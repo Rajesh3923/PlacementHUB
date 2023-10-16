@@ -1,34 +1,34 @@
 .body {
-    background: #222D32;
-    font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 190vh;
-    margin: -10px;
+  background: #222d32;
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 190vh;
+  margin: -10px;
 }
 
 h1 {
-    text-align: center;
-    color: #ECF0F5;
-    margin-top: 50px;
+  text-align: center;
+  color: #ecf0f5;
+  margin-top: 50px;
 }
 
 form {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #1A2226;
-    border-radius: 5px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  width: 900px;
+  margin: 0 10px;
+  padding: 20px;
+  background: #1a2226;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 label {
-    display: block;
-    margin-bottom: 10px;
-    color: #ECF0F5;
+  display: block;
+  margin-bottom: 10px;
+  color: #ecf0f5;
 }
 
 input[type="email"],
@@ -36,42 +36,42 @@ input[type="password"],
 input[type="text"],
 input[type="feedback"],
 select {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    background: #1A2226;
-    color: #161719;
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding:8px 8px;
-    margin-right: 17px;
-    border-radius: 50px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background: #1a2226;
+  color: #161719;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 8px 8px;
+  margin-right: 17px;
+  border-radius: 50px;
 }
 
 input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-    background-size: 300%;
-    color: #fff;
-    font-weight: bold;
-    letter-spacing: 1px;
-    animation: button-effect 8s linear infinite;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  /* background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4); */
+  background-size: 300%;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: button-effect 8s linear infinite;
 }
 
 input[type="submit"]:hover {
-    background-position: 400%;
-    cursor: pointer;
+  background-position: 400%;
+  cursor: pointer;
 }
 
 @keyframes button-effect {
-    0% {
-        background-position: 0%;
-    }
-    100% {
-        background-position: 400%;
-    }
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
 }

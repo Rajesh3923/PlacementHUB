@@ -9,6 +9,10 @@
     
 }
 
+body{
+    scroll-behavior: smooth;
+}
+
 .card {
     background-color: #fff;
     border-radius: 10px;

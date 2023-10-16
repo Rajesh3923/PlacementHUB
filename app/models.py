@@ -1,11 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User  # Assuming you are using the default User model
+
 from django.utils import timezone
 
 
 class Studentnew(models.Model):
     registrationNumber = models.CharField(primary_key=True,max_length=10,default='')
     name = models.CharField(max_length=50)
-    dob = models.IntegerField(null=True)
+    dob = models.CharField(null=True,max_length=8)
     gender = models.CharField(max_length=50, default='')
     phone = models.CharField(max_length=50)
     email = models.EmailField(blank=True)
@@ -22,16 +24,7 @@ class Studentnew(models.Model):
 
     def __str__(self):
         return self.registrationNumber
-
-
-
-
-
-
-
-
-
-
+#------------------------------------------------------------------------
 
 class AdminRegistration(models.Model):
     email = models.EmailField()
@@ -55,10 +48,20 @@ class Company(models.Model):
     name = models.CharField(max_length=255)
     job_role = models.CharField(max_length=255)
     salary_package = models.DecimalField(max_digits=10, decimal_places=2)
-    skills_required = models.TextField()
+    skills_required = models.CharField(max_length=100, default='')
 
     def __str__(self):
         return self.name
+#---------------------APPLIED STUDENTS FOR COMPANIES----------------
+class AppliedStudents(models.Model):
+    # student = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(Studentnew, on_delete=models.CASCADE,null=True)
+    name = models.CharField(primary_key=True, max_length=255,default='')
+    student=models.CharField(max_length=10,default='')
+    resume = models.FileField(upload_to='student_resumes/', default='')
+
+    def __str__(self):
+        return self.student
 
 
 

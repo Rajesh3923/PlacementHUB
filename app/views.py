@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Studentnew, AdminRegistration,Company,StudentQuery
+from .models import Studentnew, AdminRegistration,Company,StudentQuery,AppliedStudents
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
@@ -10,18 +10,13 @@ from django.contrib.auth.models import User,auth
 from django.contrib.auth.decorators import login_required
 
 
-
-
-
-
-
-
 #----------- view for retriving the student details for admin dashboard-----------------
 
 def student_admin(request):
     students = Studentnew.objects.all()
     no_of_students=Studentnew.objects.count()
-    context={'students': students,'no_of_students':no_of_students}
+    applied=AppliedStudents.objects.all()
+    context={'students': students,'no_of_students':no_of_students,'applied':applied}
     return render (request,'student_admin.html',context )
 
 
@@ -30,8 +25,10 @@ def student_admin(request):
 # ---------------view for retriving the admin details for admin profile-----------------
 
 def admin_profile(request):
-    data=AdminRegistration.objects.all()
-    context={'data':data}
+    user=request.user
+    current_user=user.username
+    data=AdminRegistration.objects.get(admin_id=current_user)
+    context={'datas':data}
     return render(request,'admin_profile.html',context)
 
 #-----------------------------------------------------------------------------
@@ -50,7 +47,8 @@ def adminlogin(request):
         else:
             error_message = 'Invalid credentials'
             return render(request, 'adminlogin.html', {'error_message': error_message})
-    return render(request,'adminlogin.html')
+    else:  
+        return render(request, 'adminlogin.html')
 
 #--------------------------------------------------------------------
 #---------------student login----------------------------------------
@@ -73,12 +71,16 @@ def studentlogin(request):
     return render(request, 'studentlogin.html')
 
 #-------------------------------------------------------------------------
-#-----------------student_dashboard---------------------------------------
+#-----------------student_dashboard for profile page---------------------------------------
 def student_dashboard(request):
     student1=Studentnew.objects.all()
     context={'userid':student1}
     return render (request,"student_dashboard.html",context)
 #-------------------------------------------------------------------
+
+#-----------------student_dashboard for matching companies---------------------------------------
+
+
 def upload_resume(request):
     if request.method == 'POST':
         # Get the uploaded resume file
@@ -97,6 +99,23 @@ def upload_resume(request):
             student.save()
 
     return redirect('student_dashboard')
+
+
+#--------------------------applied resumes---------
+def applied_upload_resume(request):
+    if request.method == 'POST':
+        resume = request.FILES['resume']
+        company_name = request.POST.get('company_name')
+        print("hi"+company_name)
+        user = request.user
+        applied_student = AppliedStudents(student=user.username,name=company_name,resume=resume)
+        applied_student.save()
+        return redirect('match')
+    return redirect('student_dashboard')
+#--------------------------------------------------------------
+
+
+#------------------fetching matching into page -----------------
 
 
 #----------------------REGISTRATION FORM--------------------
@@ -126,8 +145,6 @@ def stureg(request):
         skills = request.POST.getlist('skills[]')
         languages = request.POST.get('languages')
 
-
-
         user=User.objects.create_user(username=registrationNumber, password=dob)
         user.save()
         # Create a new Student object and save it to the database
@@ -148,14 +165,12 @@ def stureg(request):
             
         )
         subject = 'Welcome to Our Website'
-        context = {'name': name}  # Replace 'email' with the actual variable containing the user's email
+        context = {'name': name}  
         html_message = render_to_string('success.html', context)
         plain_message = strip_tags(html_message)  # Convert HTML to plain text
         from_email = '21a81a0539@gmail.com'  # Set the sender's email address
         recipient_list = [student.email]  # Set the recipient's email address
         send_mail(subject, plain_message, from_email, recipient_list, html_message=html_message)
-
-
 
         return render(request,'success.html',{'name':name })
 
@@ -166,11 +181,7 @@ def stureg(request):
 def student_profile(request):
     current_user=request.user
     userid=current_user.username
-    
-    
-    profile=Studentnew.objects.get(registrationNumber=userid)
-
-    
+    profile=Studentnew.objects.get(registrationNumber=userid)  
     context={
         
         'profile':profile
@@ -178,6 +189,27 @@ def student_profile(request):
     return render(request, 'student_profile.html', context)
 
 #-----------------------------------------admin registration-----------------
+#--------------------matching companies-------------------
+@login_required
+def match(request):
+    # Get the current user and student profile
+    current_user = request.user
+    userid = current_user.username
+    student_profile = Studentnew.objects.get(registrationNumber=userid)
+    student_skills = student_profile.skills.split(",")  # Assuming skills are comma-separated in the model
+    print(student_skills)
+    print(type(student_skills))
+    matching_companies = []
+    for skill in student_skills:
+         matching_companies.extend(Company.objects.filter(skills_required__contains=skill))
+    context = {
+        'matching_companies': matching_companies,
+    }
+    return render(request, 'match.html', context)
+
+#------------------------------------------------------------------------------------------
+
+
 def register_admin(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -203,22 +235,18 @@ def register_admin(request):
             experience=experience
         )
         subject = 'Welcome to Our Website'
-        context = {'name': full_name}  # Replace 'email' with the actual variable containing the user's email
+        context = {'name': full_name}  
         html_message = render_to_string('successadmin.html', context)
         plain_message = strip_tags(html_message)  # Convert HTML to plain text
         from_email = '21a81a0539@gmail.com'  # Set the sender's email address
         recipient_list = [admin.email]  # Set the recipient's email address
         send_mail(subject, plain_message, from_email, recipient_list, html_message=html_message)
 
-
-        
-
-        # Redirect to the success page
         return redirect('successadmin')
     
     return render(request, 'register_admin.html')
 
-#companies view function --------------------------------------
+#------------------------------------------companies view function --------------------------------------
 def admin_add_company(request):
     if request.method == 'POST':
         logo = request.FILES['logo']
@@ -226,6 +254,8 @@ def admin_add_company(request):
         job_role = request.POST['job_role']
         salary_package = request.POST['salary_package']
         skills_required = request.POST['skills_required']
+        
+
         Company.objects.create(
             logo=logo,
             name=name,
@@ -235,13 +265,26 @@ def admin_add_company(request):
         )
         return redirect('student_admin')
     return render(request, 'studentlogin.html')
-
+#--------------------------------------------------------------------------
 def student_dashboard(request):
     companies = Company.objects.all()
+    # user=request.user
+    # curr_user=user.username
+    # appliedCompanies=AppliedStudents.objects.filter(student=curr_user)
+    # print("hi"+appliedCompanies)
     return render(request, 'student_dashboard.html', {'companies': companies})
+#----------------------------------------------------
+#----------------------Applied companies by studnet----------
+def retrived(request):
+    userid=request.user
+    curr_user=userid.username
+    print(curr_user)
+    appliedCompanies=AppliedStudents.objects.filter(student=curr_user)
+    print("hi",appliedCompanies)
+    return render(request,'student_dashboard.html',{'appliedCompanies':appliedCompanies})
 
 
-#--------------------------Student contact form------------
+#--------------------------Student contact form-------------------------------------------
 def student_dashboardQuery(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -259,12 +302,29 @@ def student_dashboardQuery(request):
 
 #--------------------------studentqueryiinto admin page-----------
 def student_adminissues(request):
-    # Fetch data from the StudentQuery model
     student_queries = StudentQuery.objects.all().order_by('-arrival_time')
     print(student_queries)
     # Pass the data to the "student_admin" template
     context = {'issues': student_queries}
     return render(request, 'student_adminissues.html', context)
+
+
+#----------------------- landing main--------------------------------------------------
+def landing (request):
+    return render(request,'landing.html')
+
+
+
+
+#-----------logout----------------
+def logout_user(request):
+    logout(request)  # Log out the current user
+    return redirect('studentlogin')
+
+
+
+
+
 
 
 
@@ -276,9 +336,8 @@ def success(request):
     return redirect('studentlogin')
 
 def successadmin(request):
-    curuser_
-    #currentuser
-    userid = "Mr"  # Replace with your logic to retrieve the user ID
+    
+    userid = "welcome"  # Replace with your logic to retrieve the user ID
     return render(request, 'successadmin.html', {'userid': userid})
     return redirect('adminlogin')
 
