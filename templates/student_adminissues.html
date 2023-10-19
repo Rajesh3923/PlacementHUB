@@ -9,7 +9,9 @@
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
 
     <style>
       /* Custom CSS for the table */
@@ -67,12 +69,18 @@
             data-parent="#accordion{{ forloop.counter }}">
             <div class="card-body">
               <p>
-                <strong>Email:</strong
+                <strong>Email:</strong>
+                {{ issue.email }}
+                <a
+                  href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to={{ issue.email }}"
+                  target="_blank"
+                  rel="nofollow noopener"
+                  title="Send Email"
+                  >-reply</a
                 >
-                {{ issue.email }}<a href="mailto:pasupuletirajesh460@gmail.com" class="ml-2 mt-2">-<i class='bx bxl-gmail'></i></a>
               </p>
               <p><strong>Query:</strong> {{ issue.query }}</p>
-              <p><strong>Phone Number:</strong> {{ issue.phone_number }}</p>
+              <p><strong>Phone Number:</strong> {{ issue.mobile }}</p>
               <p><strong>Raised :</strong> {{ issue.arrival_time }}</p>
             </div>
           </div>
