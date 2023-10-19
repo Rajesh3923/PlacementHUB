@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Studentnew, AdminRegistration,Company,StudentQuery,AppliedStudents
+from .models import Studentnew, AdminRegistration,Company,StudentQueries,AppliedStudents
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 from django.core.mail import send_mail
@@ -8,6 +8,10 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.contrib.auth.models import User,auth
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_protect
+
+
 
 
 #----------- view for retriving the student details for admin dashboard-----------------
@@ -106,7 +110,7 @@ def applied_upload_resume(request):
     if request.method == 'POST':
         resume = request.FILES['resume']
         company_name = request.POST.get('company_name')
-        print("hi"+company_name)
+        # print("hi"+company_name)
         user = request.user
         applied_student = AppliedStudents(student=user.username,name=company_name,resume=resume)
         applied_student.save()
@@ -176,6 +180,26 @@ def stureg(request):
 
     return render(request, 'stureg.html')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #-----------------------------------STUDENT LOGIN------------------------
 @login_required
 def student_profile(request):
@@ -197,8 +221,8 @@ def match(request):
     userid = current_user.username
     student_profile = Studentnew.objects.get(registrationNumber=userid)
     student_skills = student_profile.skills.split(",")  # Assuming skills are comma-separated in the model
-    print(student_skills)
-    print(type(student_skills))
+    # print(student_skills)
+    # print(type(student_skills))
     matching_companies = []
     for skill in student_skills:
          matching_companies.extend(Company.objects.filter(skills_required__contains=skill))
@@ -278,32 +302,34 @@ def student_dashboard(request):
 def retrived(request):
     userid=request.user
     curr_user=userid.username
-    print(curr_user)
+    # print(curr_user)
     appliedCompanies=AppliedStudents.objects.filter(student=curr_user)
-    print("hi",appliedCompanies)
+    # print("hi",appliedCompanies)
     return render(request,'student_dashboard.html',{'appliedCompanies':appliedCompanies})
 
 
 #--------------------------Student contact form-------------------------------------------
+@csrf_protect
 def student_dashboardQuery(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        query = request.POST.get('Query')
-        
+        email = request.POST['email']
+        query = request.POST['Query']
+        mobile = request.POST['mobile']
+        print(query)
         # Use the create method to save the data to the model
-        StudentQuery.objects.create(email=email, query=query)
+        StudentQueries.objects.create(email=email, query=query,mobile=mobile)
         
         # Redirect or return a response as needed
         return redirect('student_dashboard')  # Redirect to a success page
 
-    return render(request, 'student_dashboard.html')
+    return render(request, 'success.html')
 
 
 
 #--------------------------studentqueryiinto admin page-----------
 def student_adminissues(request):
-    student_queries = StudentQuery.objects.all().order_by('-arrival_time')
-    print(student_queries)
+    student_queries = StudentQueries.objects.all().order_by('-arrival_time')
+    # print(student_queries)
     # Pass the data to the "student_admin" template
     context = {'issues': student_queries}
     return render(request, 'student_adminissues.html', context)

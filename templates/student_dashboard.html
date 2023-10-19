@@ -379,7 +379,7 @@ ol, ul {
                     interviews.
                   </p>
                   <a
-                    href="https://www.example.com/top-150-interview-questions"
+                    href="https://leetcode.com/problem-list/top-interview-questions/"
                     class="card-link"
                     target="_blank"
                     >Go to Questions</a
@@ -398,7 +398,7 @@ ol, ul {
                     course.
                   </p>
                   <a
-                    href="https://www.example.com/learn-dsa-in-one-go"
+                    href="https://www.geeksforgeeks.org/data-structures/"
                     class="card-link"
                     target="_blank"
                     >Go to DSA Course</a
@@ -416,7 +416,7 @@ ol, ul {
                     Find answers to the most common interview-related queries.
                   </p>
                   <a
-                    href="https://www.example.com/faq"
+                    href="https://www.indiabix.com/placement-papers/companies/"
                     class="card-link"
                     target="_blank"
                     >Go to FAQ</a
@@ -433,7 +433,7 @@ ol, ul {
                   </p>
                   <a
                     class="card-link"
-                    href="https://practice.geeksforgeeks.org/explore?page=1&sprint=a663236c31453b969852f9ea22507634&sortBy=submissions&sprint_name=SDE%20Sheet&utm_medium=main_header&utm_campaign=practice_header"
+                    href="https://www.geeksforgeeks.org/sde-sheet-a-complete-guide-for-sde-preparation/"
                     target="_blank"
                     >Learn More</a
                   >
@@ -451,7 +451,7 @@ ol, ul {
                   </p>
                   <a
                     class="card-link"
-                    href="https://www.hackerrank.com/interview/interview-preparation-kit"
+                    href="https://www.hackerrank.com/interview/hackerrank/challenges"
                     target="_blank"
                     >Learn More</a
                   >
@@ -474,7 +474,7 @@ ol, ul {
                   </p>
                   <a
                     class="card-link"
-                    href="https://www.geeksforgeeks.org/company-interview-corner/"
+                    href="https://www.geeksforgeeks.org/must-coding-questions-company-wise/"
                     target="_blank"
                     >Learn More</a
                   >
@@ -657,36 +657,47 @@ ol, ul {
               </div>
             </div>
               <div class="col-4 mt-5 ">
-                <form method="post" action="{% url "student_dashboard" %}">
-                  {% csrf_token %}
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      name="email"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter email" />
-                    <small id="emailHelp" class="form-text text-muted"
-                      >We'll never share your email with anyone else.</small
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Query</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="exampleInputPassword1"
-                      name="Query"
-                      placeholder="Raise Issue" />
-                  </div>
-                  
-                 
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <span id="checkmark" style="display: none; color: green;">&#10004;</span>
+                <form method="post" action="{% url 'student_dashboardQuery' %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      name="email"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+    />
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
+    >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Query</label>
+    <input
+      type="text"
+      class="form-control"
+      id="exampleInputPassword1"
+      name="Query"
+      placeholder="Raise Issue"
+    />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputMobile">Mobile no</label>
+    <input
+      type="number"
+      class="form-control"
+      id="exampleInputMobile"
+      name="mobile"
+      placeholder="Mobile No"
+    />
+  </div>
 
-                </form>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <span id="checkmark" style="display: block; color: green;">&#10004;</span>
+</form>
+
               </div>
             </div>
           </div>

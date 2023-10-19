@@ -6,6 +6,9 @@ urlpatterns = [
     path('student_dashboard/',views.student_dashboard,name='student_dashboard'),
     path('match/',views.match,name='match'),
     path('student_dashboard/',views.student_dashboardQuery,name='student_dashboard'),
+
+    path('student_dashboardQuery/', views.student_dashboardQuery, name='student_dashboardQuery'),
+
     path('studentlogin/student_dashboard/',views.student_dashboard,name='student_dashboard'),
     path('studentlogin/stureg/', views.stureg, name='stureg'),
     path('studentlogin/', views.studentlogin, name='studentlogin'),

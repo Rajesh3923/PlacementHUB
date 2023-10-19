@@ -66,9 +66,10 @@ class AppliedStudents(models.Model):
 
 
 #------------contact form-----------------
-class StudentQuery(models.Model):
+class StudentQueries(models.Model):
     email = models.EmailField()
     query = models.TextField() 
+    mobile=models.IntegerField(default=0)
     arrival_time = models.DateTimeField(default=timezone.now)
 
     
