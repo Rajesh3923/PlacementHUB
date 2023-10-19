@@ -315,12 +315,11 @@ def student_dashboardQuery(request):
         email = request.POST['email']
         query = request.POST['Query']
         mobile = request.POST['mobile']
-        print(query)
         # Use the create method to save the data to the model
         StudentQueries.objects.create(email=email, query=query,mobile=mobile)
-        
+        messages.success(request, 'Query submitted successfully.')
         # Redirect or return a response as needed
-        return redirect('student_dashboard')  # Redirect to a success page
+        return render(request,'student_dashboard.html')  # Redirect to a success page
 
     return render(request, 'success.html')
 

@@ -319,6 +319,7 @@ ol, ul {
           </li>
         </ul>
       </section>
+      
       <section class="main-home">
         <!-- Horizontal NAVBAR -->
         <nav class="nav">
@@ -335,6 +336,11 @@ ol, ul {
         <!-- Rest of the page content -->
         <div class="main-container">
           <!-- LEFT CONTENT -->
+            {% if error_message %}
+               <div class="error-message">
+                <p>{{ error_message }}</p>
+               </div>
+            {% endif %}
           <div class="left-content">
             <!-- TITLE -->
             <div class="titlehome">
@@ -694,9 +700,10 @@ ol, ul {
     />
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-  <span id="checkmark" style="display: block; color: green;">&#10004;</span>
+  <button type="submit" onclick="toast()" class="btn btn-primary">Submit</button>
+  {% comment %} <span id="checkmark" style="display: block; color: green;">&#10004;</span> {% endcomment %}
 </form>
+
 
               </div>
             </div>
@@ -795,6 +802,10 @@ ol, ul {
         .getElementById("overlay")
         .removeEventListener("click", hidePopup);
     }
+  </script>
+  <script>
+    function toast(){
+    window.alert("Are you sure to submit");}
   </script>
 
   {% block script %}
