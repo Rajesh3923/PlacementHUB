@@ -1,35 +1,32 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>Registration Page</title>
     <link rel="stylesheet" href="{% static 'adminregcss.css' %}" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
       form {
         width: 600px;
+      }
+      .error{
+        color:red;
       }
     </style>
   </head>
   <body>
     <div class="body mt-1">
-      <form
-        id="registrationForm"
-        class="mt-0"
-        action="{% url 'register_admin' %}"
-        method="POST">
+      <form id="registrationForm"
+            class="mt-0"
+            action="{% url 'register_admin' %}"
+            method="POST">
         {% csrf_token %}
         <h1>Create Account</h1>
         <div>
@@ -39,14 +36,12 @@
         <div>
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required />
+          <p id="passwordError" class="error"></p>
         </div>
         <div>
           <label for="confirmPassword">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirm_password"
-            required />
+          <input type="password" id="confirmPassword" name="confirm_password" required />
+          <p id="confirmPasswordError" class="error"></p>
         </div>
         <div>
           <label for="fullname">Full Name:</label>
@@ -58,14 +53,14 @@
         </div>
         <div class="textfeild">
           <label for="feedback">Enter Your Area of Expertise:</label>
-          <textarea
-            class="d-block"
-            id="feedback"
-            name="feedback"
-            rows="4"
-            cols="40"
-            required></textarea
-          ><br /><br />
+          <textarea class="d-block"
+                    id="feedback"
+                    name="feedback"
+                    rows="4"
+                    cols="40"
+                    required></textarea>
+          <br />
+          <br />
         </div>
         <div>
           <label for="experience">Experience (Years):</label>
@@ -82,9 +77,37 @@
             <option value="3">9+</option>
           </select>
         </div>
-
         <input type="submit" value="Register" />
       </form>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const passwordField = document.getElementById("password");
+        const confirmPasswordField = document.getElementById("confirmPassword");
+        const passwordError = document.getElementById("passwordError");
+        const confirmPasswordError = document.getElementById("confirmPasswordError");
+
+        document.getElementById("registrationForm").addEventListener("submit", function (event) {
+          passwordError.textContent = "";
+          confirmPasswordError.textContent = "";
+          if (passwordField.value.length < 8) {
+            passwordError.innerHTML = "Password must be at least 8 characters long.";
+            event.preventDefault();
+          }
+          if (!/[A-Z]/.test(passwordField.value)) {
+            passwordError.innerHTML = "Password must contain at least one uppercase letter.";
+            event.preventDefault();
+          }
+          if (!/[!@#$%^&*]/.test(passwordField.value)) {
+            passwordError.innerHTML = "Password must contain at least one special character.";
+            event.preventDefault();
+          }
+          if (passwordField.value !== confirmPasswordField.value) {
+            confirmPasswordError.innerHTML = "Passwords do not match.";
+            event.preventDefault();
+          }
+        });
+      });
+    </script>
   </body>
 </html>

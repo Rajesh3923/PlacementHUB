@@ -1,20 +1,16 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Login</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <style>
       body {
         background: #f2f2f2;
@@ -154,17 +150,18 @@
   </head>
   <body>
     {% if error_message %}
-    <div class="error-message">
-      <p>{{ error_message }}</p>
-    </div>
+      <div class="error-message">
+        <p>{{ error_message }}</p>
+      </div>
     {% endif %}
     <div class="container-fluid">
       <div class="row main-content bg-success text-center">
         <div class="col-md-4 text-center company__info">
-          <span class="company__logo"
-            ><h2><span class="fas fa-user-graduate"></span></h2
-          ></span>
-
+          <span class="company__logo">
+            <h2>
+              <span class="fas fa-user-graduate"></span>
+            </h2>
+          </span>
           <h4 class="company_title">Admin login</h4>
         </div>
         <div class="col-md-8 col-xs-12 col-sm-12 login_form">
@@ -173,40 +170,34 @@
               <h2 class="mt-3 ml-3">Log In</h2>
             </div>
             <div class="row">
-              <form
-                control=""
-                class="form-group"
-                method="POST"
-                action="{% url 'adminlogin' %}">
+              <form control=""
+                    class="form-group"
+                    method="POST"
+                    action="{% url 'adminlogin' %}">
                 {% csrf_token %}
                 <div class="row">
-                  <input
-                    type="text"
-                    name="userid"
-                    id="userid"
-                    class="form__input"
-                    placeholder="Username" />
+                  <input type="text"
+                         name="userid"
+                         id="userid"
+                         class="form__input"
+                         placeholder="Username" />
                 </div>
                 <div class="row">
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    class="form__input"
-                    placeholder="Password" />
+                  <input type="password"
+                         name="password"
+                         id="password"
+                         class="form__input"
+                         placeholder="Password" />
                 </div>
-
                 <div class="row">
-                  <input type="submit" value="submit" class="btn" />
+                  <input type="submit" value="Login" class="btn" />
                 </div>
               </form>
             </div>
             <div class="row">
               <p>
                 Don't have an account?
-                <a href="{% url 'register_admin' %}" class="stureg"
-                  >Create Account</a
-                >
+                <a href="{% url 'register_admin' %}" class="stureg">Create Account</a>
               </p>
             </div>
           </div>

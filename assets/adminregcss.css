@@ -56,10 +56,10 @@ input[type="submit"] {
   border-radius: 3px;
   /* background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4); */
   background-size: 300%;
-  color: #fff;
+  color: blue;
   font-weight: bold;
   letter-spacing: 1px;
-  animation: button-effect 8s linear infinite;
+  /* animation: button-effect 8s linear infinite; */
 }
 
 input[type="submit"]:hover {

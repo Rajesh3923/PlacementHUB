@@ -1,13 +1,15 @@
 body {
-  background: #222d32;
+  /* background: #222d32; */
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
 
 h1 {
   text-align: center;
-  color: #ecf0f5;
+  color: #008080;
   margin-top: 50px;
+  font-family: "cursive", "Style Script";
+  font-size: 50px;
 }
 
 form {
@@ -17,6 +19,7 @@ form {
   background: #1a2226;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-bottom: 50px;
 }
 
 label {
@@ -96,7 +99,7 @@ input[type="submit"] {
   color: #fff;
   font-weight: bold;
   letter-spacing: 1px;
-  animation: button-effect 8s linear infinite;
+  /* animation: button-effect 8s linear infinite; */
 }
 
 input[type="submit"]:hover {
