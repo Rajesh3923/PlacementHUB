@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0v^%b0$#t&0g1ofkmtvi$c=53g$qkv(x$r94b!g9^9b(skj!ij'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['recruitmenthub.azurewebsites.net']
 
