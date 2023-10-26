@@ -3,7 +3,7 @@ click==8.1.7
 colorama==0.4.6
 cssbeautifier==1.14.9
 Django
-djlint==1.34.0
+djlint
 EditorConfig==0.12.3
 et-xmlfile==1.1.0
 html-tag-names==0.1.2
