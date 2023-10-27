@@ -28,6 +28,10 @@ DEBUG = True
 # ALLOWED_HOSTS = ['getrecruied.azurewebsites.net', 'localhost','https://recruitmenthub.azurewebsites.net','*','getrecruited.onrender.com','0.0.0.0']
 ALLOWED_HOSTS = ['*']
 # Application definition
+CSRF_TRUSTED_ORIGINS = [
+    'https://getrecruited.azurewebsites.net',
+]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
