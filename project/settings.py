@@ -25,10 +25,13 @@ SECRET_KEY = 'django-insecure-0v^%b0$#t&0g1ofkmtvi$c=53g$qkv(x$r94b!g9^9b(skj!ij
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+# ALLOWED_HOSTS = ['getrecruied.azurewebsites.net', 'localhost','https://recruitmenthub.azurewebsites.net','*','getrecruited.onrender.com','0.0.0.0']
+ALLOWED_HOSTS = ['*','0.0.0.0:8000']
 # Application definition
+CSRF_TRUSTED_ORIGINS = [
+    'https://getrecruited.azurewebsites.net',
+]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
